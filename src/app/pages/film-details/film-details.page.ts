@@ -9,11 +9,19 @@ import { ActivatedRoute } from '@angular/router';
 export class FilmDetailsPage implements OnInit {
 
   filmId = null;
+  title = null;
+  opening_crawl = null;
+
  
   constructor(private activatedRoute: ActivatedRoute) { }
  
   ngOnInit() {
-    this.filmId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.filmId =  this.activatedRoute.snapshot.paramMap.get('id');
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.title = params["title"];
+      this.opening_crawl = params["opening_crawl"];
+  });
+
   }
 
 }

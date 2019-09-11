@@ -4,8 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="card-background-page" padding>
   <ion-button expand="full" (click)="openDetails()">Go to Details with function</ion-button>
   <ion-button expand="full" routerLink="/tabs/films/42" routerDirection="forward">Go to Details with link</ion-button>
   <ion-button expand="full" (click)="goToPlanets()">Switch to Planets</ion-button>
+
+  <ion-list>
+    <ion-card ion-item *ngFor="let film of films" (click)="openDetails(film)">
+      <ion-card-header>
+          
+          <ion-img width=20 height=20 src="https://picsum.photos/id/15/200/300"></ion-img>
+          <ion-card-title>  {{ film.title }} </ion-card-title>
+        <ion-card-subtitle> Episode {{ film.episode_id }}  </ion-card-subtitle>
+       </ion-card-header>
+    
+      <ion-card-content>  {{ film.opening_crawl }}
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
 </ion-content>
